@@ -84,9 +84,11 @@
 	    var newId = ""; 
 	    var charset = "0123456789";
 
-        for (var i = 0; i < 6; i++) {
-     		newId += charset.charAt(Math.floor(Math.random() * charset.length));
-		}
+		do {
+			for (var i = 0; i < 6; i++) {
+				newId += charset.charAt(Math.floor(Math.random() * charset.length));
+		   }
+		} while (data.todos.filter(todo => todo.id === newId).length);
 
 		// If an ID was actually given, find the item and update each property
 		if (id) {
